@@ -1,0 +1,98 @@
+<?php
+$title = 'Thêm đồ án';
+$this->headTitle($title);
+
+?>
+    <h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+//mã lĩnh vực
+    $masv = $form->get('Masv');
+    $masv->setAttribute('class', 'form-control');
+    $masv->setAttribute('placeholder', 'Mã sinh viên');
+
+    // tên lĩnh vực
+    $tenda = $form->get('Tenda');
+    $tenda->setAttribute('class', 'form-control');
+    $tenda->setAttribute('placeholder', 'Tên đồ án');
+    //ghi chú
+
+    $GVHD = $form->get('GVHD');
+    $GVHD->setAttribute('class', 'form-control');
+    $GVHD->setAttribute('placeholder', 'Giáo viên hướng dẫn');
+
+    $GVPB = $form->get('GVPB');
+    $GVPB->setAttribute('class', 'form-control');
+    $GVPB->setAttribute('placeholder', 'Giáo viên phản biện');
+
+    $linhvuc = $form->get('Linhvuc');
+    $linhvuc->setAttribute('class', 'form-control');
+    $linhvuc->setAttribute('placeholder', 'Lĩnh vực');
+
+    $diem = $form->get('Diem');
+    $diem->setAttribute('class', 'form-control');
+    $diem->setAttribute('placeholder', 'Điểm');
+
+    $namtn = $form->get('Namtn');
+    $namtn->setAttribute('class', 'form-control');
+    $namtn->setAttribute('placeholder', 'Năm tốt nghiệp');
+
+    // submit
+    $submit = $form->get('submit');
+    $submit->setAttribute('class', 'btn btn-primary');
+
+    $form->setAttribute('action', $this->url('doan', ['action' => 'add']));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+// label, element, and errors separately within ?>
+    <div class="form-group">
+        <?= $this->formLabel($masv) ?>
+        <?= $this->formElement($masv) ?>
+        <?= $this->formElementErrors()->render($masv, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($tenda) ?>
+        <?= $this->formElement($tenda) ?>
+        <?= $this->formElementErrors()->render($tenda, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($GVHD) ?>
+        <?= $this->formElement($GVHD) ?>
+        <?= $this->formElementErrors()->render($GVHD, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($GVPB) ?>
+        <?= $this->formElement($GVPB) ?>
+        <?= $this->formElementErrors()->render($GVPB, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($linhvuc) ?>
+        <?= $this->formElement($linhvuc) ?>
+        <?= $this->formElementErrors()->render($linhvuc, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($diem) ?>
+        <?= $this->formElement($diem) ?>
+        <?= $this->formElementErrors()->render($diem, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($namtn) ?>
+        <?= $this->formElement($namtn) ?>
+        <?= $this->formElementErrors()->render($namtn, ['class' => 'help-block']) ?>
+    </div>
+
+
+
+<?php
+echo $this->formSubmit($submit);
+
+echo $this->form()->closeTag();

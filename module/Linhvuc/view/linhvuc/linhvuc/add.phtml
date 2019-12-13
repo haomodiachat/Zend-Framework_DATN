@@ -1,0 +1,56 @@
+<?php
+$title = 'Thêm lĩnh vực';
+$this->headTitle($title);
+
+ ?>
+    <h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+    //mã lĩnh vực
+    $malv = $form->get('Malv');
+    $malv->setAttribute('class', 'form-control');
+    $malv->setAttribute('placeholder', 'Mã lĩnh vực');
+
+    // tên lĩnh vực
+    $tenlv = $form->get('Tenlv');
+    $tenlv->setAttribute('class', 'form-control');
+    $tenlv->setAttribute('placeholder', 'Tên lĩnh vực');
+    //ghi chú
+    $ghichu = $form->get('Ghichu');
+    $ghichu->setAttribute('class', 'form-control');
+    $ghichu->setAttribute('placeholder', 'Ghi chú');
+
+    // submit
+    $submit = $form->get('submit');
+    $submit->setAttribute('class', 'btn btn-primary');
+
+    $form->setAttribute('action', $this->url('linhvuc', ['action' => 'add']));
+    $form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+// label, element, and errors separately within ?>
+    <div class="form-group">
+        <?= $this->formLabel($malv) ?>
+        <?= $this->formElement($malv) ?>
+        <?= $this->formElementErrors()->render($malv, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($tenlv) ?>
+        <?= $this->formElement($tenlv) ?>
+        <?= $this->formElementErrors()->render($tenlv, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($ghichu) ?>
+        <?= $this->formElement($ghichu) ?>
+        <?= $this->formElementErrors()->render($ghichu, ['class' => 'help-block']) ?>
+    </div>
+
+
+<?php
+echo $this->formSubmit($submit);
+
+echo $this->form()->closeTag();

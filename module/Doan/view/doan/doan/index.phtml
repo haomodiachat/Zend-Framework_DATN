@@ -1,0 +1,47 @@
+<?php
+$title = "Danh sách đồ án";
+$this -> headTitle($title);
+
+?>
+<h1><?= $this -> escapeHtml($title)?></h1>
+<a href="<?=$this -> url('doan',['controller' => 'DoanController', 'action' => 'add']) ?>"><button class="btn btn-primary">Thêm mới</button></a>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+
+        <th>Mã sinh viên</th>
+        <th>Tên đồ án</th>
+        <th>Giáo viên hướng dẫn</th>
+        <th>Giáo viên phản biện</th>
+        <th>Lĩnh vực</th>
+        <th>Điểm</th>
+        <th>Năm tốt nghiệp</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+
+    foreach($doan as $da):?>
+        <tr>
+
+            <td><?= $this -> escapeHtml($da -> Masv)?></td>
+            <td><?= $this -> escapeHtml($da -> Tenda)?></td>
+            <td><?= $this -> escapeHtml($da -> GVHD)?></td>
+            <td><?= $this -> escapeHtml($da -> GVPB)?></td>
+            <td><?= $this -> escapeHtml($da -> Linhvuc)?></td>
+            <td><?= $this -> escapeHtml($da -> Diem)?></td>
+            <td><?= $this -> escapeHtml($da -> Namtn)?></td>
+            <td>
+
+                <a href="<?=$this -> url('doan',['controller' => 'DoanController', 'action' => 'edit']) ?>">Edit</a>
+                <a href="<?=$this -> url('doan',['controller' => 'DoanController', 'action' => 'delete']) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php
+
+    endforeach
+    ?>
+    </tbody>
+</table>

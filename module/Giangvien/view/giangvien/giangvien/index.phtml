@@ -1,0 +1,48 @@
+<?php
+$title = "Danh sách giảng viên";
+$this -> headTitle($title);
+
+?>
+<h1><?= $this -> escapeHtml($title)?></h1>
+<a href="<?=$this -> url('giangvien',['controller' => 'GiangvienController', 'action' => 'add']) ?>"><button class="btn btn-primary">Thêm mới</button></a>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+
+        <td>Mã giảng viên</td>
+        <td>Tên giảng viên</td>
+        <td>Năm sinh</td>
+        <td>Giới tính</td>
+        <td>Học vị</td>
+        <td>Email</td>
+        <td>Điện thoại</td>
+        <td>Địa chỉ</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+
+    foreach($giangvien as $gv):?>
+        <tr>
+
+            <td><?= $this -> escapeHtml($gv -> Magv)?></td>
+            <td><?= $this -> escapeHtml($gv -> Tengv)?></td>
+            <td><?= $this -> escapeHtml($gv -> Namsinh)?></td>
+            <td><?= $this -> escapeHtml($gv -> Gioitinh)?></td>
+            <td><?= $this -> escapeHtml($gv -> Hocvi)?></td>
+            <td><?= $this -> escapeHtml($gv -> Email)?></td>
+            <td><?= $this -> escapeHtml($gv -> Dienthoai)?></td>
+            <td><?= $this -> escapeHtml($gv -> Diachi)?></td>
+            <td>
+                <a href="<?=$this -> url('giangvien',['controller' => 'GiangvienController', 'action' => 'edit']) ?>">Edit</a>
+                <a href="<?=$this -> url('giangvien',['controller' => 'GiangvienController', 'action' => 'delete']) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php
+
+    endforeach
+    ?>
+    </tbody>
+</table>

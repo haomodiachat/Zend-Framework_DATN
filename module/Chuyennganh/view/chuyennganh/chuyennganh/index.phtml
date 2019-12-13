@@ -1,0 +1,39 @@
+<?php
+$title = "Danh sách chuyên ngành";
+$this -> headTitle($title);
+
+?>
+<h1><?= $this -> escapeHtml($title)?></h1>
+<a href="<?=$this -> url('chuyennganh',['controller' => 'ChuyennganhController', 'action' => 'add']) ?>"><button class="btn btn-primary">Thêm mới</button></a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <td>Mã chuyên ngành</td>
+            <td>Tên chuyên ngành</td>
+            <td>Ghi chú</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+
+        foreach($chuyennganh as $cn):?>
+        <tr>
+
+            <td><?= $this -> escapeHtml($cn -> Macn)?></td>
+            <td><?= $this -> escapeHtml($cn -> Tencn)?></td>
+            <td><?= $this -> escapeHtml($cn -> Ghichu)?></td>
+            <td>
+
+                <a href="<?=$this -> url('chuyennganh',['controller' => 'ChuyennganhController', 'action' => 'edit']) ?>">Edit</a>
+                <a href="<?=$this -> url('chuyennganh',['controller' => 'ChuyennganhController', 'action' => 'delete']) ?>">Delete</a>
+
+            </td>
+        </tr>
+        <?php
+
+        endforeach
+        ?>
+    </tbody>
+</table>

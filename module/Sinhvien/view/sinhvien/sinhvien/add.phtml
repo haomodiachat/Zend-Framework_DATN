@@ -1,0 +1,116 @@
+<?php
+$title = 'Thêm sinh viên';
+$this->headTitle($title);
+
+?>
+    <h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+    //mã lĩnh vực
+    $masv = $form->get('Masv');
+    $masv->setAttribute('class', 'form-control');
+    $masv->setAttribute('placeholder', 'Mã sinh viên');
+
+    // tên lĩnh vực
+    $tensv = $form->get('Tensv');
+    $tensv->setAttribute('class', 'form-control');
+    $tensv->setAttribute('placeholder', 'Tên sinh viên');
+    //ghi chú
+
+    $namsinh = $form->get('Namsinh');
+    $namsinh->setAttribute('class', 'form-control');
+    $namsinh->setAttribute('placeholder', 'Năm sinh');
+
+    $gioitinh = $form->get('Gioitinh');
+    $gioitinh->setAttribute('class', 'form-control');
+    $gioitinh->setAttribute('placeholder', 'Giới tính');
+
+    $khoa = $form->get('Khoa');
+    $khoa->setAttribute('class', 'form-control');
+    $khoa->setAttribute('placeholder', 'Khóa học');
+
+    $chuyennganh = $form->get('Chuyennganh');
+    $chuyennganh->setAttribute('class', 'form-control');
+    $chuyennganh->setAttribute('placeholder', 'Chuyên ngành');
+
+    $email = $form->get('Email');
+    $email->setAttribute('class', 'form-control');
+    $email->setAttribute('placeholder', 'Email');
+
+    $dienthoai = $form->get('Dienthoai');
+    $dienthoai->setAttribute('class', 'form-control');
+    $dienthoai->setAttribute('placeholder', 'Điện thoại');
+
+    $diachi = $form->get('Diachi');
+    $diachi->setAttribute('class', 'form-control');
+    $diachi->setAttribute('placeholder', 'Địa chỉ');
+    // submit
+    $submit = $form->get('submit');
+    $submit->setAttribute('class', 'btn btn-primary');
+
+    $form->setAttribute('action', $this->url('sinhvien', ['action' => 'add']));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+// label, element, and errors separately within ?>
+    <div class="form-group">
+        <?= $this->formLabel($masv) ?>
+        <?= $this->formElement($masv) ?>
+        <?= $this->formElementErrors()->render($masv, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($tensv) ?>
+        <?= $this->formElement($tensv) ?>
+        <?= $this->formElementErrors()->render($tensv, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($namsinh) ?>
+        <?= $this->formElement($namsinh) ?>
+        <?= $this->formElementErrors()->render($namsinh, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($gioitinh) ?>
+        <?= $this->formElement($gioitinh) ?>
+        <?= $this->formElementErrors()->render($gioitinh, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($khoa) ?>
+        <?= $this->formElement($khoa) ?>
+        <?= $this->formElementErrors()->render($khoa, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($chuyennganh) ?>
+        <?= $this->formElement($chuyennganh) ?>
+        <?= $this->formElementErrors()->render($chuyennganh, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($email) ?>
+        <?= $this->formElement($email) ?>
+        <?= $this->formElementErrors()->render($email, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($dienthoai) ?>
+        <?= $this->formElement($dienthoai) ?>
+        <?= $this->formElementErrors()->render($dienthoai, ['class' => 'help-block']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($diachi) ?>
+        <?= $this->formElement($diachi) ?>
+        <?= $this->formElementErrors()->render($diachi, ['class' => 'help-block']) ?>
+    </div>
+
+
+<?php
+echo $this->formSubmit($submit);
+
+echo $this->form()->closeTag();

@@ -1,0 +1,50 @@
+<?php
+$title = "Danh sách sinh viên";
+$this -> headTitle($title);
+
+?>
+<h1><?=$this -> escapeHtml($title)?></h1>
+<a href="<?=$this -> url('sinhvien',['controller' => 'SinhvienController', 'action' => 'add']) ?>"><button class="btn btn-primary">Thêm mới</button></a>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+
+        <td>Mã sinh viên</td>
+        <td>Tên sinh viên</td>
+        <td>Năm sinh</td>
+        <td>Giới tính</td>
+        <td>Khoa</td>
+        <td>Chuyên ngành</td>
+        <td>Email</td>
+        <td>Điện thoại</td>
+        <td>Địa chỉ</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    <?php
+    foreach($sinhvien as $sv):?>
+        <tr>
+
+            <td><?= $this -> escapeHtml($sv -> Masv)?></td>
+            <td><?= $this -> escapeHtml($sv -> Tensv)?></td>
+            <td><?= $this -> escapeHtml($sv -> Namsinh)?></td>
+            <td><?= $this -> escapeHtml($sv -> Gioitinh)?></td>
+            <td><?= $this -> escapeHtml($sv -> Khoa)?></td>
+            <td><?= $this -> escapeHtml($sv -> Chuyennganh)?></td>
+            <td><?= $this -> escapeHtml($sv -> Email)?></td>
+            <td><?= $this -> escapeHtml($sv -> Dienthoai)?></td>
+            <td><?= $this -> escapeHtml($sv -> Diachi)?></td>
+            <td>
+                <a href="<?=$this -> url('sinhvien',['controller' => 'SinhvienController', 'action' => 'edit']) ?>">Edit</a>
+                <a href="<?=$this -> url('sinhvien',['controller' => 'SinhvienController', 'action' => 'delete']) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php
+
+    endforeach
+    ?>
+    </tbody>
+</table>
